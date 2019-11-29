@@ -184,7 +184,7 @@
 
     <meta
       name="amp-script-src"
-      content="sha384-Kzt74vhn_R3871V6pSseaDfd8UXIM3mbnJuHGfyuAQdDInt2wIAnhniKWriuHwkF"
+      content="sha384-X-31uoxy_7l_jrdbO66oJOwBihbC7xiEYNM46yBD45fQFgA7hwS6CKu9fY_i2i59"
     />
   </head>
   <body>
@@ -238,19 +238,12 @@
             2. Select your gender
           </p>
           <div>
-            <p>
-              <input id="gender" type="radio" name="gender" value="Male" />
-              <label>Male</label>
-            </p>
-            <p>
-              <input id="gender" type="radio" name="gender" value="Female" />
-              <label>Female</label>
-            </p>
-
-            <p>
-              <input id="gender" type="radio" name="gender" value="Others" />
-              <label>Others</label>
-            </p>
+            <input id="male" type="radio" name="gender" value="Male" />
+            <label>Male</label>
+            <input id="female" type="radio" name="gender" value="Female" />
+            <label>Female</label>
+            <input id="others" type="radio" name="gender" value="Others" />
+            <label>Others</label>
           </div>
         </div>
         <div class="section">
@@ -294,38 +287,40 @@
 
       document.getElementById('hello2').addEventListener("click", newElement)
 
-      var myNodelist = document.getElementsByTagName("LI");
-      var i;
-      for (i = 0; i < myNodelist.length; i++) {
-        var span = document.createElement("SPAN");
-        var txt = document.createTextNode("\u00D7");
-        span.className = "close";
-        span.appendChild(txt);
-        myNodelist[i].appendChild(span);
-      }
-
-      var close = document.getElementsByClassName("close");
-      var i;
-      for (i = 0; i < close.length; i++) {
-        close[i].onclick = function() {
-          var div = this.parentElement;
-          div.style.display = "none";
-        }
-      }
-
       function newElement() {
+        var myNodelist = document.getElementsByTagName("LI");
+        var i;
+        for (i = 0; i < myNodelist.length; i++) {
+          var span = document.createElement("SPAN");
+          var txt = document.createTextNode("\u00D7");
+          span.className = "close";
+          span.appendChild(txt);
+          myNodelist[i].appendChild(span);
+        }
+
         var li = document.createElement("li");
         var inputValue1 = document.getElementById("name").value;
-        var inputValue2 = document.getElementById("gender").value;
+
+        var inputValue2 ;
+        console.log(document.getElementById("male"))
+        if (document.getElementById("male").checked) {
+            inputValue2 = document.getElementById("male").value;
+        }
+        if (document.getElementById("female").checked) {
+            inputValue2 = document.getElementById("female").value;
+        }
+        if (document.getElementById("others").checked) {
+            inputValue2 = document.getElementById("others").value;
+        }
+
         var inputValue3 = document.getElementById("tel").value;
-        console.log(inputValue2);
+
         var t = document.createTextNode("Name: " + inputValue1 + " Gender: " + inputValue2 + " Telephone Number: " + inputValue3);
         li.appendChild(t);
 
         document.getElementById("myUL").appendChild(li);
-        document.getElementById("name").value = "";
-        document.getElementById("gender").value = "";
-        document.getElementById("tel").value = "";
+
+        var close = document.getElementsByClassName("close");
 
         var span = document.createElement("SPAN");
         var txt = document.createTextNode("\u00D7");
@@ -333,6 +328,15 @@
         span.appendChild(txt);
         li.appendChild(span);
 
+        for (i = 0; i < close.length; i++) {
+          close[i].onclick = function() {
+            var div = this.parentElement;
+            div.style.display = "none";
+          }
+        }
+
+
+        var i;
         for (i = 0; i < close.length; i++) {
           close[i].onclick = function() {
             var div = this.parentElement;
