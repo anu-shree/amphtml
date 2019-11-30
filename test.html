@@ -184,11 +184,11 @@
 
     <meta
       name="amp-script-src"
-      content="sha384-X-31uoxy_7l_jrdbO66oJOwBihbC7xiEYNM46yBD45fQFgA7hwS6CKu9fY_i2i59"
+      content="sha384-7AtUr6ANa5CC1_pbqMxJiNv5KCSamnw3qT-zwUoJU70Gof3aU7PefmFBAVldl4_e"
     />
   </head>
   <body>
-    <h1>
+    <h1 style="text-align: center; ">
       Personal Details Form
     </h1>
     <amp-script
@@ -228,7 +228,7 @@
                 validation-for="name"
               >
                 Please enter your first and last name in alphabets separated by
-                a space (e.g. Jane Miller)
+                a space.
               </span>
             </p>
           </div>
@@ -237,14 +237,13 @@
           <p class="question">
             2. Select your gender
           </p>
-          <div>
-            <input id="male" type="radio" name="gender" value="Male" />
+          
+            <input id="male" type="radio" name="gender" checked value="Male" />
             <label>Male</label>
             <input id="female" type="radio" name="gender" value="Female" />
             <label>Female</label>
             <input id="others" type="radio" name="gender" value="Others" />
             <label>Others</label>
-          </div>
         </div>
         <div class="section">
           <p class="question">
@@ -258,7 +257,7 @@
                 name="Telephone"
                 placeholder="Telephone Number"
                 required
-                pattern="^\d+$"
+                pattern="^\d{10}$"
               />
 
               <br />
@@ -267,13 +266,13 @@
                 validation-for="tel"
               ></span>
               <span visible-when-invalid="patternMismatch" validation-for="tel">
-                Please enter only digits
+                Please enter 10 digit Phone Number
               </span>
             </p>
           </div>
         </div>
         <div class="section">
-          <button id="hello2">Click!</button>
+          <button id="hello2">Submit</button>
           <br />
           <br />
         </div>
@@ -284,66 +283,57 @@
 
     <script id="hello-world" type="text/plain" target="amp-script">
 
-
       document.getElementById('hello2').addEventListener("click", newElement)
 
+      var inputValue2 = "Male";
+
+      document.getElementById('male').addEventListener("click", function() {
+      inputValue2 = document.getElementById('male').value;
+    })
+
+      document.getElementById('female').addEventListener("click", function() {
+      inputValue2 = document.getElementById('female').value;
+    })
+      document.getElementById('others').addEventListener("click", function() {
+      inputValue2 = document.getElementById('others').value;
+    })
+
       function newElement() {
-        var myNodelist = document.getElementsByTagName("LI");
-        var i;
-        for (i = 0; i < myNodelist.length; i++) {
-          var span = document.createElement("SPAN");
-          var txt = document.createTextNode("\u00D7");
-          span.className = "close";
-          span.appendChild(txt);
-          myNodelist[i].appendChild(span);
-        }
 
         var li = document.createElement("li");
         var inputValue1 = document.getElementById("name").value;
 
-        var inputValue2 ;
-        console.log(document.getElementById("male"))
-        if (document.getElementById("male").checked) {
-            inputValue2 = document.getElementById("male").value;
-        }
-        if (document.getElementById("female").checked) {
-            inputValue2 = document.getElementById("female").value;
-        }
-        if (document.getElementById("others").checked) {
-            inputValue2 = document.getElementById("others").value;
-        }
-
         var inputValue3 = document.getElementById("tel").value;
 
-        var t = document.createTextNode("Name: " + inputValue1 + " Gender: " + inputValue2 + " Telephone Number: " + inputValue3);
-        li.appendChild(t);
 
-        document.getElementById("myUL").appendChild(li);
 
-        var close = document.getElementsByClassName("close");
+        li.appendChild(document.createTextNode("NAME: " + inputValue1));
+        li.appendChild(document.createElement("br"));
+        li.appendChild(document.createTextNode("GENDER: " + inputValue2));
+        li.appendChild(document.createElement("br"));
+        li.appendChild(document.createTextNode("TELE NO.: " + inputValue3));
+
 
         var span = document.createElement("SPAN");
         var txt = document.createTextNode("\u00D7");
         span.className = "close";
         span.appendChild(txt);
+        span.addEventListener("click", function(){
+        li.style.display = "none"
+      })
         li.appendChild(span);
 
-        for (i = 0; i < close.length; i++) {
-          close[i].onclick = function() {
-            var div = this.parentElement;
-            div.style.display = "none";
-          }
-        }
+        document.getElementById("myUL").appendChild(li);
 
-
+        var close = document.getElementsByClassName("close");
         var i;
         for (i = 0; i < close.length; i++) {
-          close[i].onclick = function() {
+          close[i].onClick = function() {
             var div = this.parentElement;
-            div.style.display = "none";
+            div.style.display.innerHTML = "none";
           }
         }
-      }
+      }     
     </script>
   </body>
 </html>
