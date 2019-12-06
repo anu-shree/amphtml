@@ -1,0 +1,2 @@
+# Created a page which contains a dynamic form and a button to generate AMP code of the form.
+The dynamic form have one text element to capture the name and one radio button to ask gender (male and female). The form also have a button on clicking which it adds new text element with different ids depending on the number of times the button has been clicked. The user should also be able to remove any of the fields.
