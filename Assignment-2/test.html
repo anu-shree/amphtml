@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8" />
     <title>amp-script</title>
-    <link rel="canonical" href="self.html" />
     <meta name="viewport" content="width=device-width,minimum-scale=1" />
     <style amp-boilerplate>
       body {
@@ -324,15 +323,6 @@
         li.appendChild(span);
 
         document.getElementById("myUL").appendChild(li);
-
-        var close = document.getElementsByClassName("close");
-        var i;
-        for (i = 0; i < close.length; i++) {
-          close[i].onClick = function() {
-            var div = this.parentElement;
-            div.style.display.innerHTML = "none";
-          }
-        }
       }     
     </script>
   </body>
