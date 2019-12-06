@@ -1,0 +1,33 @@
+{
+  "name": "amp4email",
+  "version": "1.0.0",
+  "description": "How to introduce form in an email to make it dynamic mail",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anu-shree/amp4email-simple_form.git"
+  },
+  "keywords": [
+    "amp4email",
+    "dynamic-email",
+    "amp-gmail",
+    "amp"
+  ],
+  "author": "Anupriya Shree",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anu-shree/amp4email-simple_form/issues"
+  },
+  "homepage": "https://github.com/anu-shree/amp4email-simple_form#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "multer": "^1.4.1",
+    "nodemailer": "6.1.0"
+  }
+}
